@@ -16,7 +16,7 @@ public class EventFactory {
 		case "PhoneCall" :
 			return new PhoneCall();
 		default : 
-			throw new IllegalArgumentException("Ce type d'événement n'existe pas : " + eventType);
+			throw new IllegalArgumentException("Ce type d'événement n'existe pas : " + "'" + eventType +"'. Veuillez choisir parmi les choix disponibles ci-dessus.");
 		}
 		
 	}

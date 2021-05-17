@@ -8,8 +8,8 @@ package javaCalendar;
 
 public class Main {
 	
-	public void main(String[] args) {
-		Controller.actionMenu();
-		
+	public static void main(String[] args) {
+		Controller controller = new Controller();
+		controller.actionMenu();
 	}
 }

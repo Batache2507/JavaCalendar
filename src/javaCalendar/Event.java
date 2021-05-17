@@ -1,5 +1,6 @@
 package javaCalendar;
 
+
 import java.time.LocalDateTime;
 
 public abstract class Event {
@@ -10,7 +11,7 @@ public abstract class Event {
 	private String type; 
 	private LocalDateTime date; 
 	//private organizer;
-	//private participants; //arraylist
+	//private participants; //array list
 	
 	//CONSTRUCTOR
 	public Event(String name, String description, String type) {
@@ -20,6 +21,7 @@ public abstract class Event {
 		this.type = type;
 		//date = new LocalDateTime(null, null) //on peut rajouter le jour ou l'année etc. 
 	}
+	//constructor allowing to create an event without any attribute
 	public Event() {
 		
 	}
@@ -48,6 +50,15 @@ public abstract class Event {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 
 
@@ -78,15 +89,13 @@ public abstract class Event {
 	}
 	
 	public abstract String addEvent();
-
-
-	public LocalDateTime getDate() {
-		return date;
+	
+	public String toString() {
+		String completeSentence = "Nom de l'événement : " + name + "\nDescription de l'événement : " + description + "\nType d'événement : " + type + "\nDate de l'événement : " + DateConversion.LDTToString(date) + "\n******************************************";
+		return completeSentence ;
 	}
 
 
-	public void setDate(LocalDateTime date) {
-		this.date = date;
-	}
+	
 	
 }

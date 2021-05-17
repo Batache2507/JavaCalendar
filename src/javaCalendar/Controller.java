@@ -1,10 +1,11 @@
 package javaCalendar;
 
 import java.util.Scanner;
-
+	
 public class Controller {
 	Scanner scanner = new Scanner(System.in);
-
+	EventFactory eventfactory = new EventFactory();
+	
 	/**
 	 * action menu for the user, so he can choose what he wants to do 
 	 * @param switch menu 
@@ -31,62 +32,38 @@ public class Controller {
 			listEvent();
 			break;
 		default:
-			throw new IllegalArgumentException("Ce choix n'est pas présent sur le menu : " + choice +". Veuillez un autre chiffre.");
+			throw new IllegalArgumentException("Ce choix n'est pas présent sur le menu : " + "'" + choice + "'" +". Veuillez choisir un chiffre présent ci-dessus.");
 		}
 	}
-
-	/**
-	 * method to create a new user  
-	 * @param 
-	 * @return 
-	 * @throws 
-	 */
-	/*public static void createUserAccount() {
-		System.out.println("Entrez votre prénom : "); 
-		System.out.println("Entrez votre nom : ");
-		System.out.println("Entrez votre adresse email : ");
-		System.out.println("Entrez votre mot de passe : ");
-
-
-}*/
-
-	/*********************************************************************/	
-	/**
-	 * method to connect user by using login credentials
-	 * @param 
-	 * @return 
-	 * @throws 
-	 */
-
-	/*public static void connectUser() {
-
-
-
-}*/
-
-
-	/*********************************************************************/	
+	
 	/**
 	 * method to create a new event 
 	 * @param 
-	 * @return 
-	 * @throws 
+	 * @return toString of the event 
+	 * @throws
+	 * 
 	 */
 
 	private void createEvent() {
+		System.out.println("Précisez le type de l'événement : Meeting - PhoneCall");
+		Event event = eventfactory.create(scanner.next()); //j'ai du mal avec cette ligne 
 		System.out.println("Entrez le nom de l'événement : ");
-		Event.setName(scanner.next());
+		String name = scanner.next();
+		event.setName(name);
 		System.out.println("Ajoutez une description à cet événement : ");
-		Event.setDescription(scanner.next());
-		System.out.println("Précisez le type de l'événement : Réunion - Appel Téléphonique");
-		System.out.println("Indiquez la date de l'événement :");
+		String description = scanner.next();
+		event.setDescription(description);
+		System.out.println("Indiquez la date de l'événementte (JJ/MM/AAAA HH:MM) :");
+		String date = scanner.next();
+		date += " " + scanner.next();
+		event.setDate(DateConversion.StringToLDT(date));
+		System.out.println("******************************************");
 		System.out.println("Votre événement a été ajouté avec succès !");
-		
+		System.out.println(event.toString());
 
 	}
 
 
-	/*********************************************************************/	
 	/**
 	 * method to list event
 	 * @param 
@@ -96,7 +73,7 @@ public class Controller {
 
 	private void listEvent() {
 		System.out.println("TODO");
-
+		//TODO
 	}
 
 
