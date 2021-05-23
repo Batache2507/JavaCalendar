@@ -50,10 +50,10 @@ public class Controller {
 		System.out.println("Entrez le nom de l'événement : ");
 		String name = scanner.next();
 		event.setName(name);
-		System.out.println("Ajoutez une description à cet événement : ");
+		System.out.println("Ajoutez une description à cet événement : "); //attention je ne peux mettre qu'un seul mot en console
 		String description = scanner.next();
 		event.setDescription(description);
-		System.out.println("Indiquez la date de l'événementte (JJ/MM/AAAA HH:MM) :");
+		System.out.println("Indiquez la date et l'heure de l'événement (JJ/MM/AAAA HH:MM) :");
 		String date = scanner.next();
 		date += " " + scanner.next();
 		event.setDate(DateConversion.StringToLDT(date));
