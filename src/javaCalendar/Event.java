@@ -91,7 +91,7 @@ public abstract class Event {
 	public abstract String addEvent();
 	
 	public String toString() {
-		String completeSentence = "Nom de l'événement : " + name + "\nDescription de l'événement : " + description + "\nType d'événement : " + type + "\nDate de l'événement : " + DateConversion.LDTToString(date) + "\n******************************************";
+		String completeSentence = "Nom de l'événement : " + name + "\nDescription de l'événement : " + description + "\nType d'événement : " + type + "\nDate de l'événement (yyyy/MM/ddTHH:mm) : " + date + "\n*********************************************************";
 		return completeSentence ;
 	}
 

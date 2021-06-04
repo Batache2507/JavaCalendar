@@ -1,5 +1,7 @@
 package javaCalendar;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 	
 public class Controller {
@@ -38,32 +40,40 @@ public class Controller {
 	
 	/**
 	 * method to create a new event 
-	 * @param 
+	 * @param ?????
 	 * @return toString of the event 
-	 * @throws
 	 * 
 	 */
 
 	private void createEvent() {
 		System.out.println("Précisez le type de l'événement : Meeting - PhoneCall");
-		Event event = eventfactory.create(scanner.next()); //j'ai du mal avec cette ligne 
-		System.out.println("Entrez le nom de l'événement : ");
+		Event event = eventfactory.create(scanner.next()); //type event
+		System.out.println("Entrez le nom de l'événement (max 1 mot) : "); //only one word 
 		String name = scanner.next();
 		event.setName(name);
-		System.out.println("Ajoutez une description à cet événement : "); //attention je ne peux mettre qu'un seul mot en console
+		System.out.println("Ajoutez une description à cet événement (max 1 mot) : "); //only one word 
 		String description = scanner.next();
 		event.setDescription(description);
-		System.out.println("Indiquez la date et l'heure de l'événement (JJ/MM/AAAA HH:MM) :");
-		String date = scanner.next();
-		date += " " + scanner.next();
-		event.setDate(DateConversion.StringToLDT(date));
-		System.out.println("******************************************");
+		System.out.println("Quelle est la date et l'heure de cet événement :");
+		System.out.println("Indiquez le jour (entre 1 et 31) : ");
+		int day = scanner.nextInt();
+		System.out.println("Indiquez le mois (entre 1 et 12) : "); 
+		int month = scanner.nextInt();
+		System.out.println("Indiquez l'année (yyyy) : ");
+		int year = scanner.nextInt();
+		System.out.println("Indiquez l'heure (HH) : ");
+		int hour = scanner.nextInt();
+		System.out.println("Indiquez les minutes (mm) : ");
+		int minutes = scanner.nextInt();
+		LocalDateTime date = LocalDateTime.now().withDayOfMonth(day).withMonth(month).withYear(year).withHour(hour).withMinute(minutes).truncatedTo(ChronoUnit.MINUTES);
+		event.setDate(date);
+		System.out.println("*********************************************************");
 		System.out.println("Votre événement a été ajouté avec succès !");
 		System.out.println(event.toString());
 
 	}
 
-
+	
 	/**
 	 * method to list event
 	 * @param 
@@ -72,7 +82,8 @@ public class Controller {
 	 */
 
 	private void listEvent() {
-		System.out.println("TODO");
+
+		//System.out.println("TODO");
 		//TODO
 	}
 
