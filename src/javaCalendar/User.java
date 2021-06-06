@@ -7,7 +7,7 @@ public class User {
 	private String lastname; 
 	private String email; 
 	private String password;
-	//arraylist events
+
 	
 	//CONSTRUCTOR
 	public User(String firstname, String lastname, String email, String password) {

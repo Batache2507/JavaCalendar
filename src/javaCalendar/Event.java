@@ -10,8 +10,9 @@ public abstract class Event {
 	private String description; 
 	private String type; 
 	private LocalDateTime date; 
+	//private ArrayList<contacts> contact ; 
 	//private organizer;
-	//private participants; //array list
+	
 	
 	//CONSTRUCTOR
 	public Event(String name, String description, String type) {
@@ -21,6 +22,7 @@ public abstract class Event {
 		this.type = type;
 		//date = new LocalDateTime(null, null) //on peut rajouter le jour ou l'année etc. 
 	}
+	
 	//constructor allowing to create an event without any attribute
 	public Event() {
 		
