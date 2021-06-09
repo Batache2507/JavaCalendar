@@ -85,7 +85,7 @@ public class User {
 	
 	//PERSONALIZED TO STRING
 		public String toString() {
-			String completeSentence = "*********************************************************" + "\nNom du contact : " + firstname + " " + lastname + "\nAdresse email du contact : " + email;
+			String completeSentence = "*********************************************************" + "\nNom du contact : " + firstname + " " + lastname + "\nAdresse email du contact : " + email + "\n*********************************************************\n";
 			return completeSentence ;
 		}
 	

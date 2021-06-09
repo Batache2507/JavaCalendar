@@ -9,6 +9,7 @@ public abstract class Event {
 	private String name; 
 	private String description; 
 	private LocalDateTime date; 
+	//private String owner;
 	
 	//CONSTRUCTOR
 	public Event(String name, String description) {

@@ -11,38 +11,32 @@ public class Controller {
 	ArrayList<Event> events = new ArrayList<Event>();
 	
 	/**
-	 * welcome menu, so he can choose what he wants to do 
+	 * welcome menu, only displayed when the user first runs the program 
 	 * 
-	 * 
-	 */	/*
+	 */	
 	public void welcomeMenu() {
 		System.out.println("*************************************************");
 		System.out.println("MBA1 - POO - Travail individuel - Nathan Bataille");
 		System.out.println("*************************************************");
 		System.out.println("Bienvenue sur votre mini-agenda !");
-	}*/
+		System.out.println("*************************************************");
+	}
 	
 	
 	/**
 	 * action menu for the user, so he can choose what he wants to do 
 	 * @param switch menu 
 	 * @return the method associated to the number chosen by the user 
-	 * @throws IllegalArgumentException if number for menu is incorrect
+	 * @throws IllegalArgumentException if number for menu is incorrect with default
 	 */	
 		public void actionMenu() {
-		System.out.println("*************************************************");
-		System.out.println("MBA1 - POO - Travail individuel - Nathan Bataille");
-		System.out.println("*************************************************");
-		System.out.println("Bienvenue sur votre mini-agenda !");
-		System.out.println("Que voulez-vous faire ?");
-		System.out.println("*************************************************");
-		System.out.println();
+		System.out.println("QUE VOULEZ-VOUS FAIRE ?");
 		System.out.println("Choisissez le chiffre correspondant : ");
 		System.out.println("1 -> Créer un nouvel événement");
 		System.out.println("2 -> Créer un nouveau contact");
-		System.out.println("Afficher la liste des événements prévu pour le jour");
-		System.out.println("3 -> Lister tous les événements");
-		System.out.println("4 -> Lister tous les contacts");
+		System.out.println("3 -> Afficher les événements pour une date choisie");
+		System.out.println("4 -> Lister tous les événements");
+		System.out.println("5 -> Lister tous les contacts");
 		int choice = scanner.nextInt();
 		switch (choice) {
 		case 1 : 
@@ -52,9 +46,12 @@ public class Controller {
 			createContact();
 			break;
 		case 3 : 
-			listAllEvents();
+			listChosenDayEvents();
 			break;
 		case 4 : 
+			listAllEvents();
+			break;
+		case 5 : 
 			listAllContacts();
 			break;
 		default:
@@ -91,7 +88,7 @@ public class Controller {
 		int minute = scanner.nextInt();
 		LocalDateTime date = LocalDateTime.of(year, month, day , hour, minute);
 		event.setDate(date);
-		System.out.println("Votre événement a été ajouté avec succès !");
+		System.out.println("\nVOTRE ÉVÉNEMENT A ÉTÉ CRÉÉ AVEC SUCCÈS !");
 		System.out.println(event.toString());
 		events.add(event);
 		actionMenu();
@@ -113,19 +110,19 @@ public class Controller {
 		System.out.println("Entrez son adresse email : ");
 		String email = scanner.next(); 
 		user.setEmail(email);
-		System.out.println("*********************************************************");
-		System.out.println("Votre contact a été ajouté avec succès !");
+		System.out.println("\nVOTRE CONTACT A ÉTÉ CRÉÉ AVEC SUCCÈS !");
 		System.out.println(user.toString());
 		contacts.add(user);
 		actionMenu();
 	}
 	
 	/**
-	 * method to list event
-	 * @return a toString with all the events
+	 * method to list events
+	 * @return a toString with all the events created
 	 *
 	 */
 	private void listAllEvents() {
+		System.out.println("VOICI LA LISTE DE TOUS LES ÉVÉNEMENTS CRÉÉS : \n");
 		for (Event event : events) {
 			System.out.println(event.toString());
 		}
@@ -133,11 +130,12 @@ public class Controller {
 	}
 	
 	/**
-	 * method to list all contacts from all events
-	 * @return a toString of all the contacts
+	 * method to list all contacts 
+	 * @return a toString of all the contacts created
 	 * 
 	 */
 	private void listAllContacts() {
+		System.out.println("VOICI LA LISTE DE TOUS LES CONTACTS CRÉÉS : \n");
 		for (User user : contacts) {
 			System.out.println(user.toString());
 		}
@@ -146,6 +144,16 @@ public class Controller {
 	
 	//private void listTodaysEvents() {
 		//TODO
+	
+	/**
+	 * method to list the even(s) scheduled for a chosen day
+	 * @return a toString of all the contacts created
+	 * 
+	 */
+	private void listChosenDayEvents() {
+		System.out.println("Entrez la date pour laquelle vous voulez visuliser vos événements :");
+		
+	}
 	//}
 
 }
