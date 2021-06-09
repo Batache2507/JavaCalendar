@@ -8,22 +8,16 @@ public abstract class Event {
 	//ATTRIBUTES
 	private String name; 
 	private String description; 
-	private String type; 
 	private LocalDateTime date; 
-	//private ArrayList<contacts> contact ; 
-	//private organizer;
-	
 	
 	//CONSTRUCTOR
-	public Event(String name, String description, String type) {
+	public Event(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.type = type;
-		//date = new LocalDateTime(null, null) //on peut rajouter le jour ou l'année etc. 
 	}
 	
-	//constructor allowing to create an event without any attribute
+	//CONSTRUCTOR allowing to create an event without any attribute
 	public Event() {
 		
 	}
@@ -46,13 +40,7 @@ public abstract class Event {
 		this.description = description;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	public abstract String getType();
 	
 	public LocalDateTime getDate() {
 		return date;
@@ -90,10 +78,9 @@ public abstract class Event {
 		return true;
 	}
 	
-	public abstract String addEvent();
-	
+	//PERSONALIZED TO STRING
 	public String toString() {
-		String completeSentence = "Nom de l'événement : " + name + "\nDescription de l'événement : " + description + "\nType d'événement : " + type + "\nDate de l'événement (yyyy/MM/ddTHH:mm) : " + date + "\n*********************************************************";
+		String completeSentence = "*********************************************************" + "\nNom de l'événement : " + name + "\nDescription de l'événement : " + description +  "\nDate de l'événement (yyyy/MM/ddTHH:mm) : " + date;
 		return completeSentence ;
 	}
 

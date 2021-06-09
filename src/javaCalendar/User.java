@@ -17,6 +17,11 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
+	
+	//CONSTRUCTOR allowing to create a user without any attribute
+	public User() {
+		
+	}
 
 	//GETTERS & SETTERS
 	public String getFirstname() {
@@ -77,6 +82,12 @@ public class User {
 			return false;
 		return true;
 	} 
+	
+	//PERSONALIZED TO STRING
+		public String toString() {
+			String completeSentence = "*********************************************************" + "\nNom du contact : " + firstname + " " + lastname + "\nAdresse email du contact : " + email;
+			return completeSentence ;
+		}
 	
 	
 }

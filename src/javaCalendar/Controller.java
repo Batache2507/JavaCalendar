@@ -1,15 +1,27 @@
 package javaCalendar;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 	
 public class Controller {
 	Scanner scanner = new Scanner(System.in);
 	EventFactory eventfactory = new EventFactory();
 	ArrayList<User> contacts = new ArrayList<User>();
+	ArrayList<Event> events = new ArrayList<Event>();
+	
+	/**
+	 * welcome menu, so he can choose what he wants to do 
+	 * 
+	 * 
+	 */	/*
+	public void welcomeMenu() {
+		System.out.println("*************************************************");
+		System.out.println("MBA1 - POO - Travail individuel - Nathan Bataille");
+		System.out.println("*************************************************");
+		System.out.println("Bienvenue sur votre mini-agenda !");
+	}*/
+	
 	
 	/**
 	 * action menu for the user, so he can choose what he wants to do 
@@ -17,18 +29,20 @@ public class Controller {
 	 * @return the method associated to the number chosen by the user 
 	 * @throws IllegalArgumentException if number for menu is incorrect
 	 */	
-	public void actionMenu() {
+		public void actionMenu() {
+		System.out.println("*************************************************");
 		System.out.println("MBA1 - POO - Travail individuel - Nathan Bataille");
 		System.out.println("*************************************************");
 		System.out.println("Bienvenue sur votre mini-agenda !");
-		System.out.println("*************************************************");
 		System.out.println("Que voulez-vous faire ?");
 		System.out.println("*************************************************");
 		System.out.println();
 		System.out.println("Choisissez le chiffre correspondant : ");
 		System.out.println("1 -> Créer un nouvel événement");
 		System.out.println("2 -> Créer un nouveau contact");
-		System.out.println("3 -> Lister les événements");
+		System.out.println("Afficher la liste des événements prévu pour le jour");
+		System.out.println("3 -> Lister tous les événements");
+		System.out.println("4 -> Lister tous les contacts");
 		int choice = scanner.nextInt();
 		switch (choice) {
 		case 1 : 
@@ -38,7 +52,10 @@ public class Controller {
 			createContact();
 			break;
 		case 3 : 
-			listEvent();
+			listAllEvents();
+			break;
+		case 4 : 
+			listAllContacts();
 			break;
 		default:
 			throw new IllegalArgumentException("Ce choix n'est pas présent sur le menu : " + "'" + choice + "'" +". Veuillez choisir un chiffre présent ci-dessus.");
@@ -50,7 +67,6 @@ public class Controller {
 	 * @return toString of the event 
 	 * 
 	 */
-
 	private void createEvent() {
 		System.out.println("Précisez le type de l'événement : Meeting - PhoneCall");
 		Event event = eventfactory.create(scanner.next()); //type event
@@ -75,11 +91,10 @@ public class Controller {
 		int minute = scanner.nextInt();
 		LocalDateTime date = LocalDateTime.of(year, month, day , hour, minute);
 		event.setDate(date);
-		System.out.println("*********************************************************");
 		System.out.println("Votre événement a été ajouté avec succès !");
 		System.out.println(event.toString());
+		events.add(event);
 		actionMenu();
-
 	}
 	
 	/**
@@ -88,13 +103,14 @@ public class Controller {
 	 * 
 	 */
 	private void createContact() {
-		User user = null;
+		User user = new User(); //CHANGER CA, MAIS COMMENT???
 		System.out.println("Entrez son prénom : ");
 		String firstname = scanner.next();
 		user.setFirstname(firstname); 
 		System.out.println("Entrez son nom : ");
 		String lastname = scanner.next();
 		user.setLastname(lastname);
+		System.out.println("Entrez son adresse email : ");
 		String email = scanner.next(); 
 		user.setEmail(email);
 		System.out.println("*********************************************************");
@@ -106,19 +122,31 @@ public class Controller {
 	
 	/**
 	 * method to list event
-	 * @param 
-	 * @return 
-	 * @throws 
+	 * @return a toString with all the events
+	 *
 	 */
-
-	private void listEvent() {
-		//List<Event> events = new ArrayList<Event>();	
-		//events.add(Event); // I AM HERE I AM HERE I AM HERE I AM HERE I AM HERE I AM HERE I AM HERE I AM HERE I AM HERE
-		//System.out.println(events);
-		//System.out.println("TODO");
-		//TODO
+	private void listAllEvents() {
+		for (Event event : events) {
+			System.out.println(event.toString());
+		}
+		actionMenu();
 	}
-
+	
+	/**
+	 * method to list all contacts from all events
+	 * @return a toString of all the contacts
+	 * 
+	 */
+	private void listAllContacts() {
+		for (User user : contacts) {
+			System.out.println(user.toString());
+		}
+		actionMenu();
+	}
+	
+	//private void listTodaysEvents() {
+		//TODO
+	//}
 
 }
 
